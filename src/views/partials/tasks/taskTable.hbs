@@ -1,0 +1,56 @@
+{{#if tasks}}
+
+<table class="table table-bordered table-hover table-dark">
+  <thead>
+    <tr>
+      <th>
+        i
+      </th>
+      <th>
+        tarea
+      </th>
+      <th>
+        descripcion
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each tasks}}
+    <tr>
+      <td>
+        {{@index}}
+      </td>
+      <td>
+        {{title}}
+      </td>
+      <td>
+        {{description}}
+      </td>
+      <td>
+        <a {{#if done}} class="btn btn-success" {{else}} class="btn btn-primary" {{/if}} href="/tasks/{{_id}}/done">
+          {{#if done}}
+          Undone
+          {{else}}
+          Done
+          {{/if}}
+        </a>
+        <a class="btn btn-warning" href="/tasks/{{_id}}/edit">
+          Edit
+        </a>
+        <a class="btn btn-danger" href="/tasks/{{_id}}/delete">
+          Delete
+        </a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{ else }}
+
+<div class="col-12 text-center text-uppercase alert alert-warning">
+  no hay tareas
+</div>
+
+{{/if}}
